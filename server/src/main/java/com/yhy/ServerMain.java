@@ -20,6 +20,7 @@ public class ServerMain {
         RpcData rpcData = (RpcData) ois.readObject();
         System.out.println(rpcData);
         System.out.println("开启服务");
+
         //假装解析了rpc数据
 
         String result = null;
@@ -33,6 +34,8 @@ public class ServerMain {
         //服务端返回结果
         ObjectOutputStream oos = new ObjectOutputStream(server.getOutputStream());
         oos.writeUTF(result);
+
+        //这里要刷新缓冲区将数据发送出去
         oos.flush();
         System.in.read();
         //System.in.read();
